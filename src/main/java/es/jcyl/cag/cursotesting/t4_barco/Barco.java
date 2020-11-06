@@ -1,11 +1,15 @@
 package es.jcyl.cag.cursotesting.t4_barco;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Barco {
 
 	private Posicion posicion;
 	private Direccion direccion;
 	private int maximo;
 	
+	private List<Posicion> terreno = new ArrayList<Posicion>();
 	
 	public Barco(Posicion poisicion, Direccion direccion) {
 		this(poisicion, direccion, 10);
@@ -116,9 +120,12 @@ public class Barco {
 			nuevoY = 0;
 		}
 		
+		Posicion posicionPropuesta = new Posicion(nuevoX, nuevoY);
+		if (terreno.contains(posicionPropuesta)) {
+			throw new TierraException("Se ha encontrado tierra en al posicion " + nuevoX + ", " + nuevoY);
+		}
 		
-		
-		this.posicion = new Posicion(nuevoX, nuevoY);
+		this.posicion = posicionPropuesta;
 		
 	}
 
@@ -161,7 +168,7 @@ public class Barco {
 	}
 	
 	public void addTierra(Posicion posicion) {
-		
+		terreno.add(posicion);
 	}
 	
 }
