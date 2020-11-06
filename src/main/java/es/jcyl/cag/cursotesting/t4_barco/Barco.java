@@ -56,5 +56,10 @@ public class Barco {
 		this.posicion = new Posicion(nuevoX, nuevoY);
 		
 	}
+
+	public void girar(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

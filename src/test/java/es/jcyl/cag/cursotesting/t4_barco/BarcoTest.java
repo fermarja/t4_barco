@@ -72,4 +72,59 @@ public class BarcoTest {
 		Barco barco = new Barco(posicionInicial, Direccion.OESTE);
 		barco.mover("0");
 	}
+	
+	@Test
+	public void girarIzquieradaNorteOeste() {
+		Barco barco = new Barco(posicionInicial, Direccion.NORTE);
+		barco.girar("l");
+		Assert.assertEquals(Direccion.OESTE, barco.getDireccion());
+	}
+	@Test
+	public void girarIzquierdaOesteSur() {
+		Barco barco = new Barco(posicionInicial, Direccion.OESTE);
+		barco.girar("l");
+		Assert.assertEquals(Direccion.SUR, barco.getDireccion());
+	}
+	@Test
+	public void girarIzquierdaSurEste() {
+		Barco barco = new Barco(posicionInicial, Direccion.SUR);
+		barco.girar("l");
+		Assert.assertEquals(Direccion.ESTE, barco.getDireccion());
+	}
+	@Test
+	public void girarIzquierdaEsteNorte() {
+		Barco barco = new Barco(posicionInicial, Direccion.ESTE);
+		barco.girar("l");
+		Assert.assertEquals(Direccion.NORTE, barco.getDireccion());
+	}
+	@Test
+	public void girarDerechaNorteEste() {
+		Barco barco = new Barco(posicionInicial, Direccion.NORTE);
+		barco.girar("r");
+		Assert.assertEquals(Direccion.ESTE, barco.getDireccion());
+	}
+	@Test
+	public void girarDerechaEsteSur() {
+		Barco barco = new Barco(posicionInicial, Direccion.ESTE);
+		barco.girar("r");
+		Assert.assertEquals(Direccion.SUR, barco.getDireccion());
+	}
+	@Test
+	public void girarDerechaSurOeste() {
+		Barco barco = new Barco(posicionInicial, Direccion.SUR);
+		barco.girar("r");
+		Assert.assertEquals(Direccion.OESTE, barco.getDireccion());
+	}
+	@Test
+	public void girarDerechaOesteNorte() {
+		Barco barco = new Barco(posicionInicial, Direccion.OESTE);
+		barco.girar("r");
+		Assert.assertEquals(Direccion.NORTE, barco.getDireccion());
+		
+	}
+	@Test(expected = IllegalArgumentException.class)
+	public void valorInvalidoGirar() {
+		Barco barco = new Barco(posicionInicial, Direccion.OESTE);
+		barco.girar("0");
+	}
 }
