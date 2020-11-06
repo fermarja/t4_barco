@@ -103,6 +103,20 @@ public class Barco {
 			nuevoY--;
 		}
 		
+		if (nuevoX < 0) {
+			nuevoX = maximo -1;
+		}
+		if (nuevoY < 0) {
+			nuevoY = maximo -1;
+		}
+		if (nuevoX >= maximo) {
+			nuevoX = 0;
+		}
+		if (nuevoY >= maximo) {
+			nuevoY = 0;
+		}
+		
+		
 		
 		this.posicion = new Posicion(nuevoX, nuevoY);
 		
