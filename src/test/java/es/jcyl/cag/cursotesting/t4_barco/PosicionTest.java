@@ -19,12 +19,12 @@ public class PosicionTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void noAdmiteNegativosEnX() {
-		new Posicion(-1, 10);
+		new Posicion(-1, 1);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void noAdmiteNegativosEnY() {
-		new Posicion(10, -1);
+		new Posicion(1, -1);
 	}
 
 }

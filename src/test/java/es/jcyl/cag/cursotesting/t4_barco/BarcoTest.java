@@ -7,6 +7,8 @@ import org.junit.Test;
 
 public class BarcoTest {
 
+	private static final int MAXIMO = 10;
+	private static final int INICIAL = 2;
 	private Posicion posicionInicial;
 	
 	public BarcoTest() {
@@ -15,7 +17,7 @@ public class BarcoTest {
 	
 	@Before
 	public void before() {
-		this.posicionInicial = new Posicion(2,2);
+		this.posicionInicial = new Posicion(INICIAL,INICIAL);
 	}
 	
 	@Test
@@ -28,43 +30,43 @@ public class BarcoTest {
 	public void adelanteSurSumaY() {
 		Barco barco = new Barco(posicionInicial, Direccion.SUR);
 		barco.mover("f");
-		Assert.assertEquals(3, barco.getPosicion().getY());
+		Assert.assertEquals(INICIAL+1, barco.getPosicion().getY());
 	}
 	@Test
 	public void atrasNorteSumaY() {
 		Barco barco = new Barco(posicionInicial, Direccion.NORTE);
 		barco.mover("b");
-		Assert.assertEquals(3, barco.getPosicion().getY());
+		Assert.assertEquals(INICIAL+1, barco.getPosicion().getY());
 	}
 	@Test
 	public void atrasSurRestaY() {
 		Barco barco = new Barco(posicionInicial, Direccion.SUR);
 		barco.mover("b");
-		Assert.assertEquals(1, barco.getPosicion().getY());
+		Assert.assertEquals(INICIAL-1, barco.getPosicion().getY());
 	}
 	@Test
 	public void adelanteEsteSumaX() {
 		Barco barco = new Barco(posicionInicial, Direccion.ESTE);
 		barco.mover("f");
-		Assert.assertEquals(3, barco.getPosicion().getX());
+		Assert.assertEquals(INICIAL+1, barco.getPosicion().getX());
 	}
 	@Test
 	public void adelanteOesteRestaX() {
 		Barco barco = new Barco(posicionInicial, Direccion.OESTE);
 		barco.mover("f");
-		Assert.assertEquals(1, barco.getPosicion().getX());
+		Assert.assertEquals(INICIAL-1, barco.getPosicion().getX());
 	}
 	@Test
 	public void atrasOesteSumaX() {
 		Barco barco = new Barco(posicionInicial, Direccion.OESTE);
 		barco.mover("b");
-		Assert.assertEquals(3, barco.getPosicion().getX());
+		Assert.assertEquals(INICIAL+1, barco.getPosicion().getX());
 	}
 	@Test
 	public void atrasEsteRestaX() {
 		Barco barco = new Barco(posicionInicial, Direccion.ESTE);
 		barco.mover("b");
-		Assert.assertEquals(1, barco.getPosicion().getX());
+		Assert.assertEquals(INICIAL-1, barco.getPosicion().getX());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -139,38 +141,38 @@ public class BarcoTest {
 		Barco barco = new Barco(posicionInicial, Direccion.NORTE);
 		barco.moverSecuenciaOrdenes("rff");
 		Assert.assertEquals(Direccion.ESTE, barco.getDireccion());
-		Assert.assertEquals(2, barco.getPosicion().getY());
-		Assert.assertEquals(4, barco.getPosicion().getX());
+		Assert.assertEquals(INICIAL, barco.getPosicion().getY());
+		Assert.assertEquals(INICIAL+2, barco.getPosicion().getX());
 	}
 	@Test
 	public void izquierdaVuelvePorDerecha() {
-		Barco barco = new Barco(new Posicion(0,0), Direccion.OESTE, 10);
+		Barco barco = new Barco(new Posicion(0,0), Direccion.OESTE, MAXIMO);
 		barco.mover(Sentido.ADELANTE);
-		Assert.assertEquals(9, barco.getPosicion().getX());
+		Assert.assertEquals(MAXIMO-1, barco.getPosicion().getX());
 		Assert.assertEquals(0, barco.getPosicion().getY());
 		
 
 	}
 	@Test
 	public void derechaVuelvePorIzquierda() {
-		Barco barco = new Barco(new Posicion(9,9), Direccion.ESTE, 10);
+		Barco barco = new Barco(new Posicion(MAXIMO-1,MAXIMO-1), Direccion.ESTE, MAXIMO);
 		barco.mover(Sentido.ADELANTE);
 		Assert.assertEquals(0, barco.getPosicion().getX());
-		Assert.assertEquals(9, barco.getPosicion().getY());
+		Assert.assertEquals(MAXIMO-1, barco.getPosicion().getY());
 	}
 	@Test
 	public void arribaVuelvePorAbajo() {
-		Barco barco = new Barco(new Posicion(0,0), Direccion.NORTE, 10);
+		Barco barco = new Barco(new Posicion(0,0), Direccion.NORTE, MAXIMO);
 		barco.mover(Sentido.ADELANTE);
 		Assert.assertEquals(0, barco.getPosicion().getX());
-		Assert.assertEquals(9, barco.getPosicion().getY());
+		Assert.assertEquals(MAXIMO-1, barco.getPosicion().getY());
 
 	}
 	@Test
 	public void abajoVuelvePorArriba() {
-		Barco barco = new Barco(new Posicion(9,9), Direccion.SUR, 10);
+		Barco barco = new Barco(new Posicion(MAXIMO-1,MAXIMO-1), Direccion.SUR, MAXIMO);
 		barco.mover(Sentido.ADELANTE);
-		Assert.assertEquals(9, barco.getPosicion().getX());
+		Assert.assertEquals(MAXIMO-1, barco.getPosicion().getX());
 		Assert.assertEquals(0, barco.getPosicion().getY());
 
 	}
