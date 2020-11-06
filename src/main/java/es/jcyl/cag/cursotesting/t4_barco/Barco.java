@@ -19,6 +19,11 @@ public class Barco {
 		return direccion;
 	}
 	
+	
+	public void moverSecuenciaOrdenes(String secuencia) {
+		
+	}
+	
 	public void mover(String sentido) {
 		this.mover(Sentido.byCode(sentido));
 	}

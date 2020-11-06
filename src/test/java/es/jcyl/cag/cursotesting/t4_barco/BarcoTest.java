@@ -127,4 +127,19 @@ public class BarcoTest {
 		Barco barco = new Barco(posicionInicial, Direccion.OESTE);
 		barco.girar("0");
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void valorInvalidoSecuenciaOrdenes() {
+		Barco barco = new Barco(posicionInicial, Direccion.OESTE);
+		barco.moverSecuenciaOrdenes("0");
+	}
+	
+	@Test
+	public void moverSecuenciaOrdenes() {
+		Barco barco = new Barco(posicionInicial, Direccion.NORTE);
+		barco.moverSecuenciaOrdenes("rff");
+		Assert.assertEquals(Direccion.ESTE, barco.getDireccion());
+		Assert.assertEquals(2, barco.getPosicion().getY());
+		Assert.assertEquals(4, barco.getPosicion().getX());
+	}
 }
