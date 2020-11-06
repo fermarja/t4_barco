@@ -4,11 +4,17 @@ public class Barco {
 
 	private Posicion posicion;
 	private Direccion direccion;
+	private int maximo;
 	
-	public Barco(Posicion posicion, Direccion direccion) {
+	
+	public Barco(Posicion poisicion, Direccion direccion) {
+		this(poisicion, direccion, 10);
+	}
+	public Barco(Posicion posicion, Direccion direccion, int maximo) {
 		super();
 		this.posicion = posicion;
 		this.direccion = direccion;
+		this.maximo = maximo;
 	}
 
 	public Posicion getPosicion() {

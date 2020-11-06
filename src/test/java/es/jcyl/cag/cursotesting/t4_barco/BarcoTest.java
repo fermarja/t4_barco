@@ -142,4 +142,36 @@ public class BarcoTest {
 		Assert.assertEquals(2, barco.getPosicion().getY());
 		Assert.assertEquals(4, barco.getPosicion().getX());
 	}
+	@Test
+	public void izquierdaVuelvePorDerecha() {
+		Barco barco = new Barco(new Posicion(0,0), Direccion.OESTE, 10);
+		barco.mover(Sentido.ADELANTE);
+		Assert.assertEquals(9, barco.getPosicion().getX());
+		Assert.assertEquals(0, barco.getPosicion().getY());
+		
+
+	}
+	@Test
+	public void derechaVuelvePorIzquierda() {
+		Barco barco = new Barco(new Posicion(9,9), Direccion.ESTE, 10);
+		barco.mover(Sentido.ADELANTE);
+		Assert.assertEquals(0, barco.getPosicion().getX());
+		Assert.assertEquals(9, barco.getPosicion().getY());
+	}
+	@Test
+	public void arribaVuelvePorAbajo() {
+		Barco barco = new Barco(new Posicion(0,0), Direccion.NORTE, 10);
+		barco.mover(Sentido.ADELANTE);
+		Assert.assertEquals(0, barco.getPosicion().getX());
+		Assert.assertEquals(9, barco.getPosicion().getY());
+
+	}
+	@Test
+	public void abajoVuelvePorArriba() {
+		Barco barco = new Barco(new Posicion(9,9), Direccion.SUR, 10);
+		barco.mover(Sentido.ADELANTE);
+		Assert.assertEquals(9, barco.getPosicion().getX());
+		Assert.assertEquals(0, barco.getPosicion().getY());
+
+	}
 }
