@@ -160,4 +160,8 @@ public class Barco {
 		}
 	}
 	
+	public void addTierra(Posicion posicion) {
+		
+	}
+	
 }

@@ -174,4 +174,11 @@ public class BarcoTest {
 		Assert.assertEquals(0, barco.getPosicion().getY());
 
 	}
+	
+	@Test(expected=TierraException.class)
+	public void testTierra() {
+		Barco barco = new Barco(posicionInicial, Direccion.NORTE);
+		barco.addTierra(new Posicion(2,1));
+		barco.mover(Sentido.ADELANTE);
+	}
 }
