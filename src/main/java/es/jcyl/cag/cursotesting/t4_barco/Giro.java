@@ -12,6 +12,11 @@ public enum Giro {
 	}
 	
 	public static Giro byCode(String code) {
-		return null;
+		for (Giro g: values()) {
+			if (g.giro.equalsIgnoreCase(code)) {
+				return g;
+			}
+		}
+		throw new IllegalArgumentException("Valor desconocido:" + code);
 	}
 }
