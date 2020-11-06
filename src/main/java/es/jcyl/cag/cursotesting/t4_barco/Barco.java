@@ -61,7 +61,38 @@ public class Barco {
 		girar(Giro.byCode(giro));
 	}
 	public void girar(Giro giro) {
-		
+		if (giro == Giro.IZQUIERDA) {
+			switch(this.direccion) {
+			case NORTE:
+				this.direccion = Direccion.OESTE;
+				break;
+			case ESTE:
+				this.direccion = Direccion.NORTE;
+				break;
+			case OESTE:
+				this.direccion = Direccion.SUR;
+				break;
+			case SUR:
+				this.direccion = Direccion.ESTE;
+				break;
+			}
+		}
+		else if (giro == Giro.DERECHA) {
+			switch(this.direccion) {
+			case NORTE:
+				this.direccion = Direccion.ESTE;
+				break;
+			case ESTE:
+				this.direccion = Direccion.SUR;
+				break;
+			case OESTE:
+				this.direccion = Direccion.NORTE;
+				break;
+			case SUR:
+				this.direccion = Direccion.OESTE;
+				break;
+			}
+		}
 	}
 	
 }
