@@ -57,8 +57,10 @@ public class Barco {
 		
 	}
 
-	public void girar(String string) {
-		// TODO Auto-generated method stub
+	public void girar(String giro) {
+		girar(Giro.byCode(giro));
+	}
+	public void girar(Giro giro) {
 		
 	}
 	
