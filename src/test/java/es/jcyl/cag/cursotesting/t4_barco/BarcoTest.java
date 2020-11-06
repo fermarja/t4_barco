@@ -62,7 +62,7 @@ public class BarcoTest {
 	}
 	@Test
 	public void atrasEsteRestaX() {
-		Barco barco = new Barco(posicionInicial, Direccion.OESTE);
+		Barco barco = new Barco(posicionInicial, Direccion.ESTE);
 		barco.mover("b");
 		Assert.assertEquals(1, barco.getPosicion().getX());
 	}
