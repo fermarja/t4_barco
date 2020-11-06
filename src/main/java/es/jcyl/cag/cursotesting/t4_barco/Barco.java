@@ -7,6 +7,8 @@ public class Barco {
 	
 	public Barco(Posicion posicion, Direccion direccion) {
 		super();
+		this.posicion = posicion;
+		this.direccion = direccion;
 	}
 
 	public Posicion getPosicion() {
@@ -18,8 +20,41 @@ public class Barco {
 	}
 	
 	public void mover(String sentido) {
-		
+		this.mover(Sentido.byCode(sentido));
 	}
 	
+	public void mover(Sentido sentido) {
+		int nuevoX = posicion.getX();
+		int nuevoY = posicion.getY();
+		
+		if (direccion == Direccion.ESTE && sentido == Sentido.ADELANTE) {
+			nuevoX++;
+		}
+		if (direccion == Direccion.ESTE && sentido == Sentido.ATRAS) {
+			nuevoX--;
+		}
+		if (direccion == Direccion.OESTE && sentido == Sentido.ADELANTE) {
+			nuevoX--;
+		}
+		if (direccion == Direccion.OESTE && sentido == Sentido.ATRAS) {
+			nuevoX++;
+		}
+		if (direccion == Direccion.NORTE && sentido == Sentido.ATRAS) {
+			nuevoY++;
+		}
+		if (direccion == Direccion.NORTE && sentido == Sentido.ADELANTE) {
+			nuevoY--;
+		}
+		if (direccion == Direccion.SUR && sentido == Sentido.ADELANTE) {
+			nuevoY++;
+		}
+		if (direccion == Direccion.SUR && sentido == Sentido.ATRAS) {
+			nuevoY--;
+		}
+		
+		
+		this.posicion = new Posicion(nuevoX, nuevoY);
+		
+	}
 	
 }
