@@ -17,5 +17,9 @@ public class Barco {
 		return direccion;
 	}
 	
+	public void mover(String sentido) {
+		
+	}
+	
 	
 }
