@@ -18,4 +18,13 @@ public enum Sentido {
 		}
 		throw new IllegalArgumentException("Sentido no reconocido:" + code);
 	}
+
+	public static boolean isValidCode(String code) {
+		for (Sentido s: values() ) {
+			if (s.sentido.equalsIgnoreCase(code)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

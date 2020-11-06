@@ -33,43 +33,26 @@ public class Barco {
 	public void moverSecuenciaOrdenes(String secuencia) {
 		comprobarSecuenciaValida(secuencia);
 		for (char c: secuencia.toCharArray()) {
-			try {
+			String code = Character.toString(c);
+			if (Giro.isValidCode(code)) {
 				Giro g = Giro.byCode(Character.toString(c));
 				girar(g);
 			}
-			catch (IllegalArgumentException e) {
-				// nop
-			}
-			try {
+			else {
 				Sentido s = Sentido.byCode(Character.toString(c));
 				mover(s);
-			}
-			catch (IllegalArgumentException e) {
-				// nop
 			}
 		}
 	}
 	
 	private void comprobarSecuenciaValida(String secuencia) {
 		for (char c: secuencia.toCharArray()) {
-			boolean giroValido = false;
-			boolean sentidoValido = false;
-			try {
-				Giro.byCode(Character.toString(c));
-				giroValido = true;
-			}
-			catch (IllegalArgumentException ignored) {
-				giroValido = false;
-			}
-			try {
-				Sentido.byCode(Character.toString(c));
-				sentidoValido = true;
-			}
-			catch (IllegalArgumentException ignored) {
-				sentidoValido = false;
-			}
+			String code = Character.toString(c);
+			boolean giroValido = Giro.isValidCode(code);
+			boolean sentidoValido = Sentido.isValidCode(code);
+			
 			if (!giroValido && !sentidoValido) {
-				throw new IllegalArgumentException("Comando no reconocido:" + c);
+				throw new IllegalArgumentException("Comando no reconocido:" + code);
 			}
 		}
 	}

@@ -19,4 +19,13 @@ public enum Giro {
 		}
 		throw new IllegalArgumentException("Valor desconocido:" + code);
 	}
+
+	public static boolean isValidCode(String code) {
+		for (Giro g: values()) {
+			if (g.giro.equalsIgnoreCase(code)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
