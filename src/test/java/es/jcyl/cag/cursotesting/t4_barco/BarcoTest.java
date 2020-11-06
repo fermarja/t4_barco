@@ -66,4 +66,10 @@ public class BarcoTest {
 		barco.mover("b");
 		Assert.assertEquals(1, barco.getPosicion().getX());
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void valorInvalidoMover() {
+		Barco barco = new Barco(posicionInicial, Direccion.OESTE);
+		barco.mover("0");
+	}
 }
