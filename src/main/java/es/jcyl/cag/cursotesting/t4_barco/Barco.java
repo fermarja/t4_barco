@@ -1,24 +1,21 @@
 package es.jcyl.cag.cursotesting.t4_barco;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Barco {
 
 	private Posicion posicion;
 	private Direccion direccion;
-	private int maximo;
+	private Planeta planeta;
 	
-	private List<Posicion> terreno = new ArrayList<Posicion>();
 	
 	public Barco(Posicion poisicion, Direccion direccion) {
-		this(poisicion, direccion, 10);
+		this(poisicion, direccion, new Planeta());
 	}
-	public Barco(Posicion posicion, Direccion direccion, int maximo) {
-		super();
+	
+	
+	public Barco(Posicion posicion, Direccion direccion, Planeta planeta) {
 		this.posicion = posicion;
 		this.direccion = direccion;
-		this.maximo = maximo;
+		this.planeta = planeta;
 	}
 
 	public Posicion getPosicion() {
@@ -90,6 +87,7 @@ public class Barco {
 			nuevoY--;
 		}
 		
+		int maximo = planeta.getTamano();
 		if (nuevoX < 0) {
 			nuevoX = maximo -1;
 		}
@@ -104,7 +102,7 @@ public class Barco {
 		}
 		
 		Posicion posicionPropuesta = new Posicion(nuevoX, nuevoY);
-		if (terreno.contains(posicionPropuesta)) {
+		if (planeta.esTierra(posicionPropuesta)) {
 			throw new TierraException("Se ha encontrado tierra en al posicion " + nuevoX + ", " + nuevoY);
 		}
 		
@@ -148,10 +146,6 @@ public class Barco {
 				break;
 			}
 		}
-	}
-	
-	public void addTierra(Posicion posicion) {
-		terreno.add(posicion);
 	}
 	
 }

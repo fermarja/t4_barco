@@ -146,7 +146,7 @@ public class BarcoTest {
 	}
 	@Test
 	public void izquierdaVuelvePorDerecha() {
-		Barco barco = new Barco(new Posicion(0,0), Direccion.OESTE, MAXIMO);
+		Barco barco = new Barco(new Posicion(0,0), Direccion.OESTE, new Planeta(MAXIMO));
 		barco.mover(Sentido.ADELANTE);
 		Assert.assertEquals(MAXIMO-1, barco.getPosicion().getX());
 		Assert.assertEquals(0, barco.getPosicion().getY());
@@ -155,14 +155,14 @@ public class BarcoTest {
 	}
 	@Test
 	public void derechaVuelvePorIzquierda() {
-		Barco barco = new Barco(new Posicion(MAXIMO-1,MAXIMO-1), Direccion.ESTE, MAXIMO);
+		Barco barco = new Barco(new Posicion(MAXIMO-1,MAXIMO-1), Direccion.ESTE, new Planeta(MAXIMO));
 		barco.mover(Sentido.ADELANTE);
 		Assert.assertEquals(0, barco.getPosicion().getX());
 		Assert.assertEquals(MAXIMO-1, barco.getPosicion().getY());
 	}
 	@Test
 	public void arribaVuelvePorAbajo() {
-		Barco barco = new Barco(new Posicion(0,0), Direccion.NORTE, MAXIMO);
+		Barco barco = new Barco(new Posicion(0,0), Direccion.NORTE, new Planeta(MAXIMO));
 		barco.mover(Sentido.ADELANTE);
 		Assert.assertEquals(0, barco.getPosicion().getX());
 		Assert.assertEquals(MAXIMO-1, barco.getPosicion().getY());
@@ -170,7 +170,7 @@ public class BarcoTest {
 	}
 	@Test
 	public void abajoVuelvePorArriba() {
-		Barco barco = new Barco(new Posicion(MAXIMO-1,MAXIMO-1), Direccion.SUR, MAXIMO);
+		Barco barco = new Barco(new Posicion(MAXIMO-1,MAXIMO-1), Direccion.SUR, new Planeta(MAXIMO));
 		barco.mover(Sentido.ADELANTE);
 		Assert.assertEquals(MAXIMO-1, barco.getPosicion().getX());
 		Assert.assertEquals(0, barco.getPosicion().getY());
@@ -179,8 +179,9 @@ public class BarcoTest {
 	
 	@Test(expected=TierraException.class)
 	public void testTierra() {
-		Barco barco = new Barco(posicionInicial, Direccion.NORTE);
-		barco.addTierra(new Posicion(2,1));
+		Planeta planeta = new Planeta();
+		planeta.addTierra(new Posicion(2,1));
+		Barco barco = new Barco(posicionInicial, Direccion.NORTE, planeta);
 		barco.mover(Sentido.ADELANTE);
 	}
 }
